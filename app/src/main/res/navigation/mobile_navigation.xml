@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.dicoding.skinalyze.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.dicoding.skinalyze.ui.history.HistoryFragment"
+        android:label="@string/title_scan_history"
+        tools:layout="@layout/fragment_history" />
+
+    <fragment
+        android:id="@+id/navigation_product"
+        android:name="com.dicoding.skinalyze.ui.product.ProductFragment"
+        android:label="@string/title_product_rekomendation"
+        tools:layout="@layout/fragment_product" />
+
+    <fragment
+        android:id="@+id/navigation_user"
+        android:name="com.dicoding.skinalyze.ui.userprofile.UserFragment"
+        android:label="@string/title_user_profile"
+        tools:layout="@layout/fragment_user">
+
+        <action
+            android:id="@+id/action_userFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.dicoding.skinalyze.ui.userprofile.SettingFragment"
+        android:label="@string/fragment_setting"
+        tools:layout="@layout/fragment_setting">
+
+        <!-- Aksi navigasi untuk berpindah ke UserFragment -->
+        <action
+            android:id="@+id/action_settingFragment_to_userFragment"
+            app:destination="@+id/navigation_user" />
+    </fragment>
+
+</navigation>

@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">skinalyze</string>
+    <string name="title_home">Skinalyze</string>
+    <string name="title_history">History</string>
+    <string name="title_product">Product</string>
+    <string name="title_user">User</string>
+    <string name="title_scan_history">Scan History</string>
+    <string name="title_product_rekomendation">Product Recomendation</string>
+    <string name="title_user_profile">User Profile</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="settings">setting</string>
+    <string name="logout_icon">Logout Menu</string>
+    <string name="edit_profile_icon">Edit Menu</string>
+    <string name="change_password_icon">Change Password Menu</string>
+    <string name="settings_icon">Setting Menu</string>
+    <string name="image_description_history">Image Description History</string>
+    <string name="time_icon_history_description">time icon history description</string>
+    <string name="calendar_icon_description">calenda icon description</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="morning_reminder_icon">Morning Reminder Icon</string>
+    <string name="night_reminder_icon">Night Reminder Icon</string>
+    <string name="fragment_setting">Setting</string>
+</resources>
