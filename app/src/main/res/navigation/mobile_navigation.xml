@@ -3,47 +3,81 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/navigation_home">
 
+    <!-- Home Fragment -->
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.dicoding.skinalyze.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
+    <!-- History Fragment -->
     <fragment
         android:id="@+id/navigation_history"
         android:name="com.dicoding.skinalyze.ui.history.HistoryFragment"
         android:label="@string/title_scan_history"
         tools:layout="@layout/fragment_history" />
 
+    <!-- Product Fragment -->
     <fragment
         android:id="@+id/navigation_product"
         android:name="com.dicoding.skinalyze.ui.product.ProductFragment"
-        android:label="@string/title_product_rekomendation"
-        tools:layout="@layout/fragment_product" />
+        android:label="Product Recommendation"
+        tools:layout="@layout/fragment_product">
+        <action
+            android:id="@+id/action_productFragment_to_categoryDetailFragment"
+            app:destination="@id/categoryDetailFragment" />
+    </fragment>
 
+    <!-- Category Detail Fragment -->
+    <fragment
+        android:id="@+id/categoryDetailFragment"
+        android:name="com.dicoding.skinalyze.ui.product.CategoryDetailFragment"
+        android:label="Category Detail"
+        tools:layout="@layout/fragment_category_detail">
+        <argument
+            android:name="categoryName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_categoryDetailFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+
+    <!-- Product Detail Fragment -->
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.dicoding.skinalyze.ui.product.ProductDetailFragment"
+        android:label="Product Detail"
+        tools:layout="@layout/fragment_product_detail">
+        <argument
+            android:name="productName"
+            app:argType="string" />
+        <argument
+            android:name="productImageRes"
+            app:argType="integer" />
+    </fragment>
+
+    <!-- User Fragment -->
     <fragment
         android:id="@+id/navigation_user"
         android:name="com.dicoding.skinalyze.ui.userprofile.UserFragment"
         android:label="@string/title_user_profile"
         tools:layout="@layout/fragment_user">
-
         <action
             android:id="@+id/action_userFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
     </fragment>
 
+    <!-- Setting Fragment -->
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.dicoding.skinalyze.ui.userprofile.SettingFragment"
         android:label="@string/fragment_setting"
         tools:layout="@layout/fragment_setting">
-
-        <!-- Aksi navigasi untuk berpindah ke UserFragment -->
         <action
             android:id="@+id/action_settingFragment_to_userFragment"
-            app:destination="@+id/navigation_user" />
+            app:destination="@id/navigation_user" />
     </fragment>
 
 </navigation>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">skinalyze</string>
+    <string name="app_name">Skinalyze</string>
     <string name="title_home">Skinalyze</string>
     <string name="title_history">History</string>
     <string name="title_product">Product</string>
@@ -15,10 +15,30 @@
     <string name="settings_icon">Setting Menu</string>
     <string name="image_description_history">Image Description History</string>
     <string name="time_icon_history_description">time icon history description</string>
-    <string name="calendar_icon_description">calenda icon description</string>
+    <string name="calendar_icon_description">calendar icon description</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="morning_reminder_icon">Morning Reminder Icon</string>
     <string name="night_reminder_icon">Night Reminder Icon</string>
     <string name="fragment_setting">Setting</string>
+
+    // Ini bagian Folder Auth yaa
+    <string name="welcome_back">Welcome Back</string> a
+    <string name="forgot_your_password">Forgot your Password?</string>
+    <string name="hey_there">Hey there,</string>
+    <string name="create_account">Create an Account</string>
+    <string name="your_name">Your Name</string>
+    <string name="select_gender">Select your Gender</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="privacy_policy">By continuing you accept our Privacy Policy and Term of Use</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="already_have_account">Already have an account? Sign in</string>
+    <string name="dont_have_account">Don’t have an account yet? Sign upn</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="back_to_sign_in">Back to Sign in</string>
+
 </resources>

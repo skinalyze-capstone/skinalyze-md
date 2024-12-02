@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.product.ProductFragment">
+    tools:context=".ui.product.CategoryDetailFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_categories"
+        android:id="@+id/rv_products"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_category" />
+        tools:listitem="@layout/item_product" />
 </androidx.constraintlayout.widget.ConstraintLayout>
