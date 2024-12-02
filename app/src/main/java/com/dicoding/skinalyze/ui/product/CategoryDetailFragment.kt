@@ -6,13 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.skinalyze.R
 
 class CategoryDetailFragment : Fragment() {
-
-    private val args: CategoryDetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,16 +17,17 @@ class CategoryDetailFragment : Fragment() {
     ): View {
         val view = inflater.inflate(R.layout.fragment_category_detail, container, false)
 
-        val categoryName = args.categoryName
+        // Ambil argumen dari Bundle
+        val categoryName = arguments?.getString("categoryName") ?: ""
         val products = getProductsForCategory(categoryName)
 
         val rvProducts = view.findViewById<RecyclerView>(R.id.rv_products)
         rvProducts.adapter = ProductAdapter(products) { product ->
-            val action = CategoryDetailFragmentDirections.actionCategoryDetailFragmentToProductDetailFragment(
-                product.name,
-                product.imageRes
-            )
-            findNavController().navigate(action)
+            val bundle = Bundle().apply {
+                putString("productName", product.name)
+                putInt("productImageRes", product.imageRes)
+            }
+            findNavController().navigate(R.id.action_categoryDetailFragment_to_productDetailFragment, bundle)
         }
 
         return view
@@ -44,5 +42,4 @@ class CategoryDetailFragment : Fragment() {
             else -> emptyList()
         }
     }
-
 }

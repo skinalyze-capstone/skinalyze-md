@@ -24,8 +24,10 @@ class ProductFragment : Fragment() {
 
         val rvCategories = view.findViewById<RecyclerView>(R.id.rv_categories)
         rvCategories.adapter = CategoryAdapter(categories) { category ->
-            val action = ProductFragmentDirections.actionProductFragmentToCategoryDetailFragment(category)
-            findNavController().navigate(action)
+            val bundle = Bundle().apply {
+                putString("categoryName", category)
+            }
+            findNavController().navigate(R.id.action_productFragment_to_categoryDetailFragment, bundle)
         }
 
         return view

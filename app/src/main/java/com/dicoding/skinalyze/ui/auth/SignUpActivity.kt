@@ -18,7 +18,7 @@ class SignUpActivity : AppCompatActivity() {
         val tvAlreadyHaveAccount = findViewById<TextView>(R.id.tvAlreadyHaveAccount)
 
         btnSignUp.setOnClickListener {
-            Toast.makeText(this, "Anda berhasil mendaftar", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Anda berhasil mendaftar!", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, SignInActivity::class.java))
             finish()
         }
