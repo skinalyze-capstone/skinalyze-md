@@ -8,9 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.dicoding.skinalyze.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.skinalyze.databinding.FragmentHomeBinding
+import com.dicoding.skinalyze.ui.history.History
+import com.dicoding.skinalyze.ui.history.HistoryAdapter
 
 class HomeFragment : Fragment() {
 
@@ -43,6 +44,26 @@ class HomeFragment : Fragment() {
         binding.tvHelloUser.text = spannable
 
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Mengisi data history
+        val recentHistories = loadRecentHistories() // Maksimal 2 data
+        val adapter = HistoryAdapter(recentHistories)
+
+        // Mengatur RecyclerView untuk menampilkan history
+        binding.recyclerViewRecentHistory.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerViewRecentHistory.adapter = adapter
+    }
+
+    private fun loadRecentHistories(): List<History> {
+        // Contoh data dummy, ganti dengan data dari database
+        return listOf(
+            History("Acne", "12:00 PM", "01/12/2024", "Use salicylic acid"),
+            History("Dry Skin", "08:00 AM", "30/11/2024", "Use moisturizer")
+        )
     }
 
     override fun onDestroyView() {

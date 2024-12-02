@@ -5,9 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".ui.history.HistoryFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewHistory"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
-
+        android:padding="16dp"
+        tools:listitem="@layout/item_history" />
 </FrameLayout>
