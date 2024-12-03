@@ -70,6 +70,7 @@
 
         <!-- Morning Reminder -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_morning_reminder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -105,6 +106,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/txt_morning_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="07:30"
@@ -139,6 +141,7 @@
 
         <!-- Night Reminder -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_night_reminder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -174,6 +177,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/txt_night_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="22:30"
