@@ -18,8 +18,8 @@ class ProductFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_product, container, false)
 
         val categories = listOf(
-            "Acne", "Oily Skin", "Dry Skin", "Sensitive Skin",
-            "Wrinkles & Fine Lines", "Dull Skin"
+            "Acne", "Eye bags", "Blackhead", "Milia",
+            "Redness", "Texture"
         )
 
         val rvCategories = view.findViewById<RecyclerView>(R.id.rv_categories)

@@ -1,14 +1,16 @@
 package com.dicoding.skinalyze.ui.home
 
 import android.os.Bundle
-import android.text.SpannableString
 import android.text.Spannable
+import android.text.SpannableString
 import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dicoding.skinalyze.R
 import com.dicoding.skinalyze.databinding.FragmentHomeBinding
 import com.dicoding.skinalyze.ui.history.History
 import com.dicoding.skinalyze.ui.history.HistoryAdapter
@@ -49,7 +51,15 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Mengisi data history
+        // Menangani klik pada tombol btn_reminder
+        binding.btnReminder.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_settingFragment)
+        }
+
+        binding.btnAnalyze.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_analyzeFragment)
+        }
+
         val recentHistories = loadRecentHistories() // Maksimal 2 data
         val adapter = HistoryAdapter(recentHistories)
 

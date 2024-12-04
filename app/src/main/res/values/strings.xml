@@ -20,10 +20,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="morning_reminder_icon">Morning Reminder Icon</string>
     <string name="night_reminder_icon">Night Reminder Icon</string>
-    <string name="fragment_setting">Setting</string>
+    <string name="fragment_setting">Settings</string>
 
     // Ini bagian Folder Auth yaa
-    <string name="welcome_back">Welcome Back</string> a
+    <string name="welcome_back">Welcome Back</string>
+    a
     <string name="forgot_your_password">Forgot your Password?</string>
     <string name="hey_there">Hey there,</string>
     <string name="create_account">Create an Account</string>
@@ -41,5 +42,27 @@
     <string name="reset_password">Reset Password</string>
     <string name="back_to_sign_in">Back to Sign in</string>
     <string name="phone_number">Handphone Number (08xxx)</string>
+    <string name="analyze">Analyze</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="analyze_button_string">Let\'s analyze your face!</string>
+    <string name="theme">Theme</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="skincare_reminder">Skincare Reminder</string>
+    <string name="morning_reminder">Morning Reminder</string>
+    <string name="_00_00">00:00</string>
+    <string name="click_to_set_timer">Click to set timer</string>
+    <string name="night_reminder">Night Reminder</string>
+    <string name="username">Username</string>
+    <string name="useremail_gmail_com">useremail@gmail.com</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change_password">Change Password</string>
+    <string name="log_out">Log Out</string>
+    <string name="feature">Feature</string>
+    <string name="analyze_your_skin_here">Analyze your skin here</string>
+    <string name="set_your_reminder_here">Set your reminder here</string>
+    <string name="history">History</string>
+    <string name="picture_face_upload">Picture Face Upload</string>
+    <string name="category_tittle">Product Category</string>
 
 </resources>

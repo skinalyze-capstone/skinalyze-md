@@ -2,6 +2,7 @@ package com.dicoding.skinalyze
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -30,28 +31,39 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_history,
                 R.id.navigation_product,
                 R.id.navigation_user,
-                R.id.settingFragment
+                R.id.settingFragment,
+                R.id.analyzeFragment
             )
         )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        // Observer untuk menampilkan tombol back hanya di SettingFragment
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.settingFragment) {
-                // Menampilkan tombol back
-                supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            } else {
-                // Menyembunyikan tombol back di fragment lainnya
-                supportActionBar?.setDisplayHomeAsUpEnabled(false)
+            when (destination.id) {
+                R.id.analyzeFragment, R.id.settingFragment -> {
+                    navView.visibility = View.GONE
+                }
+                else -> {
+                    navView.visibility = View.VISIBLE
+                }
+            }
+        }
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.settingFragment, R.id.analyzeFragment -> {
+                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                }
+                else -> {
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                }
             }
         }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
-            // Tombol back menavigasi kembali ke UserFragment
             onBackPressed()
             return true
         }

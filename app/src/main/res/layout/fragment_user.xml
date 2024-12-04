@@ -30,7 +30,7 @@
             android:id="@+id/profile_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Username"
+            android:text="@string/username"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginBottom="6dp" />
@@ -39,7 +39,7 @@
             android:id="@+id/profile_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="useremail@gmail.com"
+            android:text="@string/useremail_gmail_com"
             android:textSize="14sp"
             android:textColor="@android:color/darker_gray"
             android:layout_marginBottom="24dp" />
@@ -69,7 +69,8 @@
                     android:layout_margin="4dp"
                     android:padding="16dp"
                     android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="32dp"
@@ -81,7 +82,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Edit Profile"
+                        android:text="@string/edit_profile"
                         android:textColor="@android:color/black"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -104,7 +105,8 @@
                     android:layout_margin="4dp"
                     android:padding="16dp"
                     android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="32dp"
@@ -116,7 +118,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Change Password"
+                        android:text="@string/change_password"
                         android:textColor="@android:color/black"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -139,7 +141,8 @@
                     android:padding="16dp"
                     android:layout_margin="4dp"
                     android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="32dp"
@@ -151,7 +154,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Settings"
+                        android:text="@string/settings"
                         android:textColor="@android:color/black"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -174,7 +177,8 @@
                     android:padding="16dp"
                     android:layout_margin="4dp"
                     android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="32dp"
@@ -187,7 +191,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Log Out"
+                        android:text="@string/log_out"
                         android:textColor="@android:color/holo_red_dark"
                         android:textSize="18sp" />
                 </LinearLayout>

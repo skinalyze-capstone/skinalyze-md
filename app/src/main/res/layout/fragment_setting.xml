@@ -2,6 +2,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
@@ -16,7 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Theme"
+            android:text="@string/theme"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginBottom="8dp" />
@@ -48,7 +49,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Dark Mode"
+                    android:text="@string/dark_mode"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -63,7 +64,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Skincare Reminder"
+            android:text="@string/skincare_reminder"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginBottom="8dp" />
@@ -101,7 +102,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Morning Reminder"
+                        android:text="@string/morning_reminder"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
@@ -109,17 +110,18 @@
                         android:id="@+id/txt_morning_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="07:30"
+                        android:text="@string/_00_00"
                         android:textSize="30sp"/>
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Click to set timer"
+                    android:text="@string/click_to_set_timer"
                     android:textColor="@color/gray_500"
                     android:textSize="12sp"
-                    android:paddingEnd="15dp"/>
+                    android:paddingEnd="15dp"
+                    tools:ignore="RtlSymmetry" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/switch_morning_reminder"
@@ -172,7 +174,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Night Reminder"
+                        android:text="@string/night_reminder"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
@@ -180,7 +182,7 @@
                         android:id="@+id/txt_night_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="22:30"
+                        android:text="@string/_00_00"
                         android:textSize="30sp" />
                 </LinearLayout>
 
@@ -188,10 +190,11 @@
                     android:id="@+id/txt_night_timer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Click to set timer"
+                    android:text="@string/click_to_set_timer"
                     android:textColor="@color/gray_500"
                     android:textSize="12sp"
-                    android:paddingEnd="15dp"/>
+                    android:paddingEnd="15dp"
+                    tools:ignore="RtlSymmetry" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/switch_night_reminder"
