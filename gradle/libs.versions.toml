@@ -1,5 +1,9 @@
 [versions]
+<<<<<<< HEAD
 agp = "8.7.2"
+=======
+agp = "8.7.3"
+>>>>>>> 1abe720 (piupiu)
 circleimageview = "3.1.0"
 kotlin = "2.0.21"
 coreKtx = "1.15.0"

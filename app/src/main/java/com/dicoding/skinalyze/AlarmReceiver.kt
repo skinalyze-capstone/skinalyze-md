@@ -32,5 +32,9 @@ class AlarmReceiver : BroadcastReceiver() {
             .build()
         notificationManager.notify(0, notification)
     }
+<<<<<<< HEAD
 }
 
+=======
+}
+>>>>>>> 1abe720 (piupiu)

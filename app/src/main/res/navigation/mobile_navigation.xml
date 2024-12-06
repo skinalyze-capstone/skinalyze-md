@@ -93,6 +93,23 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+<<<<<<< HEAD
+=======
+        <action
+            android:id="@+id/action_userFragment_to_ChangePasswordFragment"
+            app:destination="@id/ChangePasswordFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_userFragment_to_EditProfileFragment"
+            app:destination="@id/EditProfileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+>>>>>>> 1abe720 (piupiu)
     </fragment>
 
     <!-- Setting Fragment -->
@@ -110,6 +127,39 @@
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
+<<<<<<< HEAD
+=======
+    <!-- Setting Fragment -->
+    <fragment
+        android:id="@+id/ChangePasswordFragment"
+        android:name="com.dicoding.skinalyze.ui.userprofile.ChangePasswordFragment"
+        android:label="@string/fragment_change_password"
+        tools:layout="@layout/fragment_change_password">
+        <action
+            android:id="@+id/action_settingFragment_to_userFragment"
+            app:destination="@id/navigation_user"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!-- Setting Fragment -->
+    <fragment
+        android:id="@+id/EditProfileFragment"
+        android:name="com.dicoding.skinalyze.ui.userprofile.EditProfileFragment"
+        android:label="@string/fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile">
+        <action
+            android:id="@+id/action_settingFragment_to_userFragment"
+            app:destination="@id/navigation_user"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+>>>>>>> 1abe720 (piupiu)
     <!-- Analyze Fragment -->
     <fragment
         android:id="@+id/analyzeFragment"
