@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.skinalyze.databinding.FragmentHistoryBinding
+import androidx.navigation.fragment.findNavController
 
 class HistoryFragment : Fragment() {
 
@@ -25,7 +26,16 @@ class HistoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val allHistories = loadAllHistories() // Ganti dengan data dari database
-        val adapter = HistoryAdapter(allHistories)
+        val adapter = HistoryAdapter(allHistories) { history ->
+            val action = HistoryFragmentDirections
+                .actionHistoryFragmentToResultFragment(
+                    history.condition,        // Argumen pertama: condition
+                    history.recommendation,   // Argumen kedua: recommendation
+                    history.time,             // Argumen ketiga: time
+                    history.date              // Argumen keempat: date
+                )
+            findNavController().navigate(action)
+        }
 
         binding.recyclerViewHistory.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewHistory.adapter = adapter

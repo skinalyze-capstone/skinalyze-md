@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.skinalyze.R
 import com.dicoding.skinalyze.databinding.ItemHistoryBinding
 
-class HistoryAdapter(private val histories: List<History>) :
+class HistoryAdapter(
+    private val histories: List<History>,
+    private val onItemClick: (History) -> Unit ) :
     RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
     inner class HistoryViewHolder(private val binding: ItemHistoryBinding) :
@@ -17,6 +19,10 @@ class HistoryAdapter(private val histories: List<History>) :
             binding.dateTextView.text = history.date
             binding.recommendationTextView.text = history.recommendation
             binding.conditionImageView.setImageResource(R.drawable.ic_placeholder_image)
+
+            itemView.setOnClickListener {
+                onItemClick(history)
+            }
         }
     }
 

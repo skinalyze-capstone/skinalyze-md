@@ -61,7 +61,9 @@ class HomeFragment : Fragment() {
         }
 
         val recentHistories = loadRecentHistories() // Maksimal 2 data
-        val adapter = HistoryAdapter(recentHistories)
+        val adapter = HistoryAdapter(recentHistories) { _ ->
+            findNavController().navigate(R.id.action_homeFragment_to_resultFragment)
+        }
 
         // Mengatur RecyclerView untuk menampilkan history
         binding.recyclerViewRecentHistory.layoutManager = LinearLayoutManager(requireContext())

@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.analyzeFragment, R.id.settingFragment -> {
+                R.id.analyzeFragment, R.id.settingFragment, R.id.resultFragment -> {
                     navView.visibility = View.GONE
                 }
                 else -> {
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.settingFragment, R.id.analyzeFragment -> {
+                R.id.settingFragment, R.id.analyzeFragment, R.id.resultFragment -> {
                     supportActionBar?.setDisplayHomeAsUpEnabled(true)
                 }
                 else -> {

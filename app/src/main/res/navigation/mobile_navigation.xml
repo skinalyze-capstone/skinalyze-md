@@ -24,14 +24,58 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <!-- History Fragment -->
     <fragment
         android:id="@+id/navigation_history"
         android:name="com.dicoding.skinalyze.ui.history.HistoryFragment"
-        android:label="@string/title_scan_history"
-        tools:layout="@layout/fragment_history" />
+        android:label="HistoryFragment"
+        tools:layout="@layout/fragment_history">
+        <action
+            android:id="@+id/action_historyFragment_to_resultFragment"
+            app:destination="@id/resultFragment">
+            <argument
+                android:name="condition"
+                app:argType="string" />
+            <argument
+                android:name="recommendation"
+                app:argType="string" />
+            <argument
+                android:name="time"
+                app:argType="string" />
+            <argument
+                android:name="date"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <!-- Result Fragment -->
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.dicoding.skinalyze.ui.home.ResultFragment"
+        android:label="Result"
+        tools:layout="@layout/fragment_result">
+        <argument
+            android:name="condition"
+            app:argType="string" />
+        <argument
+            android:name="recommendation"
+            app:argType="string" />
+        <argument
+            android:name="time"
+            app:argType="string" />
+        <argument
+            android:name="date"
+            app:argType="string" />
+    </fragment>
 
     <!-- Product Fragment -->
     <fragment

@@ -64,5 +64,8 @@
     <string name="history">History</string>
     <string name="picture_face_upload">Picture Face Upload</string>
     <string name="category_tittle">Product Category</string>
+    <string name="toproduct_button_string">Go to product page recomendation</string>
+    <string name="Result">Result</string>
+    <string name="diagnose">Diagnose</string>
 
 </resources>

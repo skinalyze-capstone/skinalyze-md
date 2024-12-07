@@ -22,7 +22,7 @@ import com.dicoding.skinalyze.R
 import com.dicoding.skinalyze.utils.uriToFile
 import java.io.File
 
-@Suppress("DEPRECATION", "ControlFlowWithEmptyBody")
+@Suppress("DEPRECATION")
 class AnalyzeFragment : Fragment() {
 
     private lateinit var analyzeButton: Button
@@ -133,6 +133,7 @@ class AnalyzeFragment : Fragment() {
             ActivityCompat.requestPermissions(requireActivity(),
                 arrayOf(Manifest.permission.CAMERA),
                 CAMERA_PERMISSION_REQUEST)
+
         }
 
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -156,10 +157,27 @@ class AnalyzeFragment : Fragment() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == CAMERA_PERMISSION_REQUEST || requestCode == STORAGE_PERMISSION_REQUEST) {
             if (grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
+                // Tampilkan Toast bahwa izin telah diberikan
+                showToast("Permissions granted. You can now use the camera or gallery.")
             } else {
                 showToast("Permissions are required to take pictures and access the gallery.")
             }
         }
+    }
+
+    private fun openCamera() {
+        val photoFile = File(requireContext().cacheDir, "temp.jpg")
+        val photoUri: Uri = FileProvider.getUriForFile(
+            requireContext(),
+            "${requireContext().packageName}.fileprovider",
+            photoFile
+        )
+        currentImageUri = photoUri
+        launcherCamera.launch(photoUri)
+    }
+
+    private fun openGallery() {
+        launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -178,7 +196,7 @@ class AnalyzeFragment : Fragment() {
 
         view.findViewById<Button>(R.id.bt_open_gallery).setOnClickListener {
             if (checkPermissions()) {
-                launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+                openGallery()
             } else {
                 requestPermissions()
             }
@@ -186,14 +204,7 @@ class AnalyzeFragment : Fragment() {
 
         view.findViewById<Button>(R.id.bt_open_camera).setOnClickListener {
             if (checkPermissions()) {
-                val photoFile = File(requireContext().cacheDir, "temp.jpg")
-                val photoUri: Uri = FileProvider.getUriForFile(
-                    requireContext(),
-                    "${requireContext().packageName}.fileprovider",
-                    photoFile
-                )
-                currentImageUri = photoUri
-                launcherCamera.launch(photoUri)
+                openCamera()
             } else {
                 requestPermissions()
             }
@@ -201,7 +212,6 @@ class AnalyzeFragment : Fragment() {
 
         analyzeButton.setOnClickListener {
             handleAnalyzeButtonClick()
-            // Displaying toast when the analyze button is pressed
             showToast("Analyze button pressed")
         }
     }
