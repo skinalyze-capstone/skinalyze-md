@@ -57,6 +57,12 @@
     <string name="useremail_gmail_com">useremail@gmail.com</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="change_password">Change Password</string>
+<<<<<<< HEAD
+=======
+    <string name="enter_new_pass">Enter Your New Password</string>
+    <string name="apply">Apply Changes</string>
+    <string name="back_to_user_profile">Back to User Profile</string>
+>>>>>>> 1abe720 (piupiu)
     <string name="log_out">Log Out</string>
     <string name="feature">Feature</string>
     <string name="analyze_your_skin_here">Analyze your skin here</string>
@@ -67,5 +73,19 @@
     <string name="toproduct_button_string">Go to product page recomendation</string>
     <string name="Result">Result</string>
     <string name="diagnose">Diagnose</string>
+<<<<<<< HEAD
+=======
+
+    <string name="update_profile">Update Profile</string>
+    <string name="new_email">Insert Your New E-Mail</string>
+    <string name="new_name">Insert Your New Name</string>
+    <string name="update_profile_button">Update Profile</string>
+    <string name="fragment_change_password">Change Password</string>
+    <string name="fragment_edit_profile">Edit Profile</string>
+
+    <string name="enter_valid_pass">Please enter a valid password</string>
+    <string name="password_updated">Password updated successfully</string>
+    <string name="error_updating_pass">Failed to update password. Try again.</string>
+>>>>>>> 1abe720 (piupiu)
 
 </resources>

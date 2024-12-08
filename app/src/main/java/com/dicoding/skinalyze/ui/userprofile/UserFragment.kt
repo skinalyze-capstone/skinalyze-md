@@ -61,13 +61,11 @@ class UserFragment : Fragment() {
 
         // Set Click Listeners for Cards
         cardEditProfile.setOnClickListener {
-            Toast.makeText(requireContext(), "Edit Profile clicked", Toast.LENGTH_SHORT).show()
-            // TODO: Add navigation or action for edit profile
+            findNavController().navigate(R.id.action_userFragment_to_EditProfileFragment)
         }
 
         cardChangePassword.setOnClickListener {
-            Toast.makeText(requireContext(), "Change Password clicked", Toast.LENGTH_SHORT).show()
-            // TODO: Add navigation or action for change password
+            findNavController().navigate(R.id.action_userFragment_to_ChangePasswordFragment)
         }
 
         cardSettings.setOnClickListener {

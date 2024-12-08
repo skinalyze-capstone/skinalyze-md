@@ -50,6 +50,10 @@ class SettingFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_setting, container, false)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1abe720 (piupiu)
         // Initialize Views
         initializeViews(view)
 
