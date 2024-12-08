@@ -137,8 +137,6 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
-<<<<<<< HEAD
-=======
         <action
             android:id="@+id/action_userFragment_to_ChangePasswordFragment"
             app:destination="@id/ChangePasswordFragment"
@@ -153,7 +151,6 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
->>>>>>> 1abe720 (piupiu)
     </fragment>
 
     <!-- Setting Fragment -->
@@ -171,8 +168,6 @@
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
-<<<<<<< HEAD
-=======
     <!-- Setting Fragment -->
     <fragment
         android:id="@+id/ChangePasswordFragment"
@@ -202,8 +197,6 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
-
->>>>>>> 1abe720 (piupiu)
     <!-- Analyze Fragment -->
     <fragment
         android:id="@+id/analyzeFragment"
