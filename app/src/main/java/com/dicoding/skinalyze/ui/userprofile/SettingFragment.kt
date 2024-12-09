@@ -30,14 +30,10 @@ class SettingFragment : Fragment() {
 
     private lateinit var morningTimeTextView: TextView
     private lateinit var nightTimeTextView: TextView
-
-    // Request Notification Permission
     private val requestNotificationPermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             showPermissionResultToast("Notification permission", isGranted)
         }
-
-    // Request Exact Alarm Permission
     private val requestExactAlarmPermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             showPermissionResultToast("Exact alarm permission", isGranted)
@@ -49,17 +45,12 @@ class SettingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_setting, container, false)
-
-        // Initialize Views
         initializeViews(view)
 
-        // Initialize Switch and SharedPreferences
         val sharedPref = requireContext().getSharedPreferences("ReminderSettings", Context.MODE_PRIVATE)
         setupSwitches(view, sharedPref)
 
-        // Request Permissions
         requestNecessaryPermissions()
-
         return view
     }
 
@@ -68,44 +59,51 @@ class SettingFragment : Fragment() {
         nightTimeTextView = view.findViewById(R.id.txt_night_time)
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setupSwitches(view: View, sharedPref: SharedPreferences) {
         val morningSwitch = view.findViewById<SwitchCompat>(R.id.switch_morning_reminder)
         val nightSwitch = view.findViewById<SwitchCompat>(R.id.switch_night_reminder)
         val darkModeSwitch = view.findViewById<SwitchCompat>(R.id.switch_dark_mode)
+        val isMorningReminder = sharedPref.getBoolean("morningReminder", false)
+        val isNightReminder = sharedPref.getBoolean("nightReminder", false)
 
-        // Load switch states from SharedPreferences
         morningSwitch.isChecked = sharedPref.getBoolean("morningReminder", false)
         nightSwitch.isChecked = sharedPref.getBoolean("nightReminder", false)
-
         setupDarkModeSwitch(darkModeSwitch)
+        if (isMorningReminder) {
+            val morningTime = sharedPref.getString("morningTime", "06:00") ?: "06:00"
+            morningTimeTextView.text = morningTime
+        } else {
+            morningTimeTextView.text = "06:00" // Waktu default pagi
+        }
 
-        // Listener for morning switch
+        if (isNightReminder) {
+            val nightTime = sharedPref.getString("nightTime", "20:00") ?: "20:00"
+            nightTimeTextView.text = nightTime
+        } else {
+            nightTimeTextView.text = "20:00" // Waktu default malam
+        }
+
+
         morningSwitch.setOnCheckedChangeListener { _, isChecked ->
             handleMorningSwitch(isChecked, sharedPref)
         }
 
-        // Listener for night switch
         nightSwitch.setOnCheckedChangeListener { _, isChecked ->
             handleNightSwitch(isChecked, sharedPref)
         }
 
-        // Set reminder time pickers
         setupTimePickers(view)
     }
 
     private fun setupDarkModeSwitch(darkModeSwitch: SwitchCompat) {
         val sharedPref = requireContext().getSharedPreferences("user_preferences", Context.MODE_PRIVATE)
         val isDarkModeEnabled = sharedPref.getBoolean("DARK_MODE", false)
-
-        // Set initial switch state
         darkModeSwitch.isChecked = isDarkModeEnabled
-
-        // Set AppCompatDelegate according to preference
         AppCompatDelegate.setDefaultNightMode(
             if (isDarkModeEnabled) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
         )
 
-        // Listener for dark mode switch
         darkModeSwitch.setOnCheckedChangeListener { _, isChecked ->
             AppCompatDelegate.setDefaultNightMode(
                 if (isChecked) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
@@ -120,7 +118,6 @@ class SettingFragment : Fragment() {
     }
 
     private fun setupTimePickers(view: View) {
-        // Set up morning reminder time picker
         view.findViewById<View>(R.id.card_morning_reminder).setOnClickListener {
             showTimePicker(isMorning = true) { hour, minute ->
                 val time = String.format(Locale.getDefault(), "%02d:%02d", hour, minute)
@@ -129,7 +126,6 @@ class SettingFragment : Fragment() {
             }
         }
 
-        // Set up night reminder time picker
         view.findViewById<View>(R.id.card_night_reminder).setOnClickListener {
             showTimePicker(isMorning = false) { hour, minute ->
                 val time = String.format(Locale.getDefault(), "%02d:%02d", hour, minute)
@@ -183,9 +179,13 @@ class SettingFragment : Fragment() {
         val minute = calendar.get(Calendar.MINUTE)
 
         TimePickerDialog(requireContext(), { _, selectedHour, selectedMinute ->
+            val sharedPref = requireContext().getSharedPreferences("ReminderSettings", Context.MODE_PRIVATE)
+            val time = String.format(Locale.getDefault(), "%02d:%02d", selectedHour, selectedMinute)
             if (isMorning) {
                 if (selectedHour in 6..9) {
                     onTimeSet(selectedHour, selectedMinute)
+                    sharedPref.edit().putString("morningTime", time).apply()
+                    morningTimeTextView.text = time
                 } else {
                     showInvalidTimePopup(
                         "Invalid Morning Time",
@@ -195,6 +195,8 @@ class SettingFragment : Fragment() {
             } else {
                 if (selectedHour in 20..23 || (selectedHour == 0 && selectedMinute == 0)) {
                     onTimeSet(selectedHour, selectedMinute)
+                    sharedPref.edit().putString("nightTime", time).apply()
+                    nightTimeTextView.text = time
                 } else {
                     showInvalidTimePopup(
                         "Invalid Evening Time",

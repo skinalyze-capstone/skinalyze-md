@@ -64,7 +64,7 @@
     <string name="picture_face_upload">Picture Face Upload</string>
     <string name="category_tittle">Product Category</string>
     <string name="toproduct_button_string">Go to product page recomendation</string>
-    <string name="Result">Result</string>
+    <string name="Result">Analyzing Result</string>
     <string name="diagnose">Diagnose</string>
     <string name="update_profile">Update Profile</string>
     <string name="new_email">Insert Your New E-Mail</string>
@@ -75,5 +75,6 @@
     <string name="enter_valid_pass">Please enter a valid password</string>
     <string name="password_updated">Password updated successfully</string>
     <string name="error_updating_pass">Failed to update password. Try again.</string>
+    <string name="HistoryFragment">History</string>
 
 </resources>

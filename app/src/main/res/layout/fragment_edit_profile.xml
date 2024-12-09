@@ -2,7 +2,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
     android:padding="16dp">
 
     <LinearLayout
@@ -11,7 +10,6 @@
         android:orientation="vertical">
 
         <!-- Profile Picture Section -->
-
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -109,7 +107,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#5371D8"
             android:text="@string/update_profile_button"
-            android:textColor="#FFFFFF" />
+            android:background="@drawable/button_rounded"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 </ScrollView>
