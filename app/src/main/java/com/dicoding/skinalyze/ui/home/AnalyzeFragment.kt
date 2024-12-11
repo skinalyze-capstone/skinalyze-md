@@ -73,7 +73,7 @@ class AnalyzeFragment : Fragment() {
     private fun openCropActivity(uri: Uri) {
         val destinationUri = Uri.fromFile(File(requireContext().cacheDir, "${System.currentTimeMillis()}.jpg"))
         val uCropIntent = UCrop.of(uri, destinationUri)
-            .withAspectRatio(16f, 9f)
+            .withAspectRatio(1f, 1f)
             .withMaxResultSize(1080, 1080)
             .getIntent(requireContext())
         uCropLauncher.launch(uCropIntent)

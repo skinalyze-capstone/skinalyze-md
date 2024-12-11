@@ -10,6 +10,7 @@ import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -70,20 +71,20 @@ class SettingFragment : Fragment() {
         morningSwitch.isChecked = sharedPref.getBoolean("morningReminder", false)
         nightSwitch.isChecked = sharedPref.getBoolean("nightReminder", false)
         setupDarkModeSwitch(darkModeSwitch)
+
         if (isMorningReminder) {
-            val morningTime = sharedPref.getString("morningTime", "06:00") ?: "06:00"
+            val morningTime = sharedPref.getString("morningTime", "07:00") ?: "07:00"
             morningTimeTextView.text = morningTime
         } else {
-            morningTimeTextView.text = "06:00" // Waktu default pagi
+            morningTimeTextView.text = sharedPref.getString("morningTime", "07:00")
         }
 
         if (isNightReminder) {
             val nightTime = sharedPref.getString("nightTime", "20:00") ?: "20:00"
             nightTimeTextView.text = nightTime
         } else {
-            nightTimeTextView.text = "20:00" // Waktu default malam
+            nightTimeTextView.text = sharedPref.getString("nightTime", "20:00")
         }
-
 
         morningSwitch.setOnCheckedChangeListener { _, isChecked ->
             handleMorningSwitch(isChecked, sharedPref)
@@ -150,25 +151,31 @@ class SettingFragment : Fragment() {
     }
 
     private fun handleMorningSwitch(isChecked: Boolean, sharedPref: SharedPreferences) {
+        sharedPref.edit().putBoolean("morningReminder", isChecked).apply()
         if (isChecked) {
             val time = morningTimeTextView.text.toString().split(":")
             val hour = time.getOrNull(0)?.toIntOrNull() ?: 6
             val minute = time.getOrNull(1)?.toIntOrNull() ?: 0
             setReminder(hour, minute, isMorning = true)
+            Toast.makeText(context, "Morning reminder on", Toast.LENGTH_SHORT).show()
         } else {
             cancelReminder(isMorning = true)
+            Toast.makeText(context, "Morning reminder off", Toast.LENGTH_SHORT).show()
         }
         sharedPref.edit().putBoolean("morningReminder", isChecked).apply()
     }
 
     private fun handleNightSwitch(isChecked: Boolean, sharedPref: SharedPreferences) {
+        sharedPref.edit().putBoolean("nightReminder", isChecked).apply()
         if (isChecked) {
             val time = nightTimeTextView.text.toString().split(":")
             val hour = time.getOrNull(0)?.toIntOrNull() ?: 20
             val minute = time.getOrNull(1)?.toIntOrNull() ?: 0
             setReminder(hour, minute, isMorning = false)
+            Toast.makeText(context, "Night reminder on", Toast.LENGTH_SHORT).show()
         } else {
             cancelReminder(isMorning = false)
+            Toast.makeText(context, "Night reminder off", Toast.LENGTH_SHORT).show()
         }
         sharedPref.edit().putBoolean("nightReminder", isChecked).apply()
     }
@@ -215,6 +222,7 @@ class SettingFragment : Fragment() {
             .show()
     }
 
+    @SuppressLint("DefaultLocale")
     private fun setReminder(hour: Int, minute: Int, isMorning: Boolean) {
         val calendar = Calendar.getInstance().apply {
             set(Calendar.HOUR_OF_DAY, hour)
@@ -248,14 +256,25 @@ class SettingFragment : Fragment() {
                     AlarmManager.INTERVAL_DAY,
                     pendingIntent
                 )
+            } else {
+                Toast.makeText(
+                    context,
+                    "Permission to set exact alarms is required.",
+                    Toast.LENGTH_LONG
+                ).show()
             }
         } else {
-            alarmManager.setExact(
+            alarmManager.setExactAndAllowWhileIdle(
                 AlarmManager.RTC_WAKEUP,
                 calendar.timeInMillis,
                 pendingIntent
             )
         }
+        Toast.makeText(
+            context,
+            "Reminder set for ${String.format("%02d:%02d", hour, minute)}.",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     private fun cancelReminder(isMorning: Boolean) {
@@ -263,7 +282,6 @@ class SettingFragment : Fragment() {
         val intent = Intent(context, AlarmReceiver::class.java).apply {
             putExtra("isMorning", isMorning)
         }
-
         val requestCode = if (isMorning) 1 else 2
         val pendingIntent = PendingIntent.getBroadcast(
             context,
@@ -271,8 +289,9 @@ class SettingFragment : Fragment() {
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
-
         alarmManager.cancel(pendingIntent)
+        pendingIntent.cancel()
+        Log.d("CancelReminder", "Alarm canceled for requestCode: $requestCode")
     }
 
     private fun showPermissionResultToast(permission: String, isGranted: Boolean) {
