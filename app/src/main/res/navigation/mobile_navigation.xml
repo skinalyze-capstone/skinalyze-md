@@ -95,7 +95,6 @@
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
-    <!-- Product Fragment -->
     <fragment
         android:id="@+id/navigation_product"
         android:name="com.dicoding.skinalyze.ui.product.ProductFragment"
@@ -126,21 +125,28 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+            android:id="@+id/action_productRecommendationFragment_to_itemProductFragment"
+            app:destination="@id/itemProductFragment">
+            <argument
+                android:name="category"
+                app:argType="string" />
+        </action>
     </fragment>
 
     <!-- Product Detail Fragment -->
     <fragment
-        android:id="@+id/productDetailFragment"
-        android:name="com.dicoding.skinalyze.ui.product.ProductDetailFragment"
-        android:label="Product Detail"
-        tools:layout="@layout/fragment_product_detail">
+        android:id="@+id/itemProductFragment"
+        android:name="com.dicoding.skinalyze.ui.product.ItemProductFragment"
+        android:label="Item Product"
+        tools:layout="@layout/fragment_product_recommendation">
         <argument
-            android:name="productName"
+            android:name="category"
             app:argType="string" />
         <argument
             android:name="productImageRes"
             app:argType="integer" />
     </fragment>
+
 
     <!-- User Fragment -->
     <fragment
@@ -215,7 +221,6 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
-
     <!-- Analyze Fragment -->
     <fragment
         android:id="@+id/analyzeFragment"

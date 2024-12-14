@@ -6,18 +6,18 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.dicoding.skinalyze.R
 
-data class Product(val name: String, val imageRes: Int)
-
 class ProductAdapter(
-    private val products: List<Product>,
+    private val productList: List<Product>,
     private val onItemClick: (Product) -> Unit
 ) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
-    class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvProductName: TextView = itemView.findViewById(R.id.tv_product_name)
-        val ivProductImage: ImageView = itemView.findViewById(R.id.iv_product_image)
+    class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val image: ImageView = view.findViewById(R.id.iv_product_image)
+        val productName: TextView = view.findViewById(R.id.tv_product_name)
+        val productDescription: TextView = view.findViewById(R.id.tv_product_description)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
@@ -26,11 +26,14 @@ class ProductAdapter(
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        val product = products[position]
-        holder.tvProductName.text = product.name
-        holder.ivProductImage.setImageResource(product.imageRes)
+        val product = productList[position]
+        holder.productName.text = product.nameProduct
+        // Menampilkan brand dan kandungan produk di deskripsi
+        holder.productDescription.text = "Brand: ${product.brand}. Kandungan: ${product.kandunganProduct}"
+        Glide.with(holder.itemView.context).load(product.imageUrl).into(holder.image)
+
         holder.itemView.setOnClickListener { onItemClick(product) }
     }
 
-    override fun getItemCount(): Int = products.size
+    override fun getItemCount(): Int = productList.size
 }

@@ -1,5 +1,6 @@
 package com.dicoding.skinalyze.ui.userprofile
 
+import android.content.Intent
 import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import com.dicoding.skinalyze.R
 import androidx.navigation.fragment.findNavController
+import com.dicoding.skinalyze.ui.auth.SignInActivity
 
 class UserFragment : Fragment() {
 
@@ -73,9 +75,17 @@ class UserFragment : Fragment() {
         }
 
         cardLogout.setOnClickListener {
-            Toast.makeText(requireContext(), "Log Out clicked", Toast.LENGTH_SHORT).show()
-            // TODO: Add log out functionality
+            // Menampilkan toast bahwa logout berhasil
+            Toast.makeText(requireContext(), "Logging Out...", Toast.LENGTH_SHORT).show()
+
+            // Memanggil metode logOut() dari SignInActivity
+            val intent = Intent(requireContext(), SignInActivity::class.java)
+            requireContext().startActivity(intent)
+
+            // Mengarahkan pengguna ke halaman login dan menghapus aktivitas sebelumnya
+            requireActivity().finish()  // Menutup UserFragment atau aktivitas yang sedang aktif
         }
+
 
         return view
     }

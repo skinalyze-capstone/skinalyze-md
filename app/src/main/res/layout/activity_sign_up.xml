@@ -37,12 +37,13 @@
             android:hint="@string/your_name">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nameInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Gender Dropdown -->
+        <!-- Gender Input -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -50,11 +51,11 @@
             android:hint="@string/define_your_gender">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/genderInput"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
-
-
 
         <!-- Date of Birth Input -->
         <com.google.android.material.textfield.TextInputLayout
@@ -64,22 +65,10 @@
             android:hint="@string/date_of_birth">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/dobInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="date" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Phone Number Input -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:hint="@string/phone_number">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Email Input -->
@@ -90,6 +79,7 @@
             android:hint="@string/email">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress" />
@@ -104,19 +94,11 @@
             app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Privacy Policy -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="@string/privacy_policy"
-            android:textColor="?android:textColor"
-            android:textSize="12sp" />
 
         <!-- Sign Up Button -->
         <Button
@@ -126,16 +108,6 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="#5371D8"
             android:text="@string/sign_up"
-            android:background="@drawable/button_rounded"
             android:textColor="@color/white" />
-
-        <!-- Already Have Account -->
-        <TextView
-            android:id="@+id/tvAlreadyHaveAccount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/already_have_account"
-            android:textColor="#5371D8" />
     </LinearLayout>
 </ScrollView>

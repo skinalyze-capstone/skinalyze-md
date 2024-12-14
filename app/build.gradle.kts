@@ -75,6 +75,5 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
 
-    implementation (libs.androidx.navigation.fragment.ktx.v285)
-    implementation (libs.androidx.navigation.ui.ktx.v285)
+    kapt(libs.compiler)
 }
