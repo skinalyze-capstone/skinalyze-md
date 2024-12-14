@@ -1,0 +1,197 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_home">
+
+    <!-- Home Fragment -->
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.dicoding.skinalyze.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_settingFragment"
+            app:destination="@id/settingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_analyzeFragment"
+            app:destination="@id/analyzeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!-- History Fragment -->
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.dicoding.skinalyze.ui.history.HistoryFragment"
+        android:label="@string/HistoryFragment"
+        tools:layout="@layout/fragment_history">
+        <action
+            android:id="@+id/action_historyFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="condition"
+                app:argType="string" />
+            <argument
+                android:name="recommendation"
+                app:argType="string" />
+            <argument
+                android:name="time"
+                app:argType="string" />
+            <argument
+                android:name="date"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <!-- Result Fragment -->
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.dicoding.skinalyze.ui.home.ResultFragment"
+        android:label="Result"
+        tools:layout="@layout/fragment_result">
+        <argument
+            android:name="condition"
+            app:argType="string" />
+        <argument
+            android:name="recommendation"
+            app:argType="string" />
+        <argument
+            android:name="time"
+            app:argType="string" />
+        <argument
+            android:name="date"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_resultFragment_to_productFragment"
+            app:destination="@id/navigation_product"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_product"
+        android:name="com.dicoding.skinalyze.ui.product.ProductRecommendationFragment"
+        android:label="Product Recommendation"
+        tools:layout="@layout/fragment_product_recommendation">
+        <action
+            android:id="@+id/action_productRecommendationFragment_to_itemProductFragment"
+            app:destination="@id/itemProductFragment">
+            <argument
+                android:name="category"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/itemProductFragment"
+        android:name="com.dicoding.skinalyze.ui.product.ItemProductFragment"
+        android:label="Item Product"
+        tools:layout="@layout/fragment_product_recommendation">
+        <argument
+            android:name="category"
+            app:argType="string" />
+    </fragment>
+
+
+    <!-- User Fragment -->
+    <fragment
+        android:id="@+id/navigation_user"
+        android:name="com.dicoding.skinalyze.ui.userprofile.UserFragment"
+        android:label="@string/title_user_profile"
+        tools:layout="@layout/fragment_user">
+        <action
+            android:id="@+id/action_userFragment_to_settingFragment"
+            app:destination="@id/settingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_userFragment_to_ChangePasswordFragment"
+            app:destination="@id/ChangePasswordFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_userFragment_to_EditProfileFragment"
+            app:destination="@id/EditProfileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!-- Setting Fragment -->
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.dicoding.skinalyze.ui.userprofile.SettingFragment"
+        android:label="@string/fragment_setting"
+        tools:layout="@layout/fragment_setting">
+        <action
+            android:id="@+id/action_settingFragment_to_userFragment"
+            app:destination="@id/navigation_user"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!-- Setting Fragment -->
+    <fragment
+        android:id="@+id/ChangePasswordFragment"
+        android:name="com.dicoding.skinalyze.ui.userprofile.ChangePasswordFragment"
+        android:label="@string/fragment_change_password"
+        tools:layout="@layout/fragment_change_password">
+        <action
+            android:id="@+id/action_settingFragment_to_userFragment"
+            app:destination="@id/navigation_user"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!-- Setting Fragment -->
+    <fragment
+        android:id="@+id/EditProfileFragment"
+        android:name="com.dicoding.skinalyze.ui.userprofile.EditProfileFragment"
+        android:label="@string/fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile">
+        <action
+            android:id="@+id/action_settingFragment_to_userFragment"
+            app:destination="@id/navigation_user"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <!-- Analyze Fragment -->
+    <fragment
+        android:id="@+id/analyzeFragment"
+        android:name="com.dicoding.skinalyze.ui.home.AnalyzeFragment"
+        android:label="@string/analyze"
+        tools:layout="@layout/fragment_analyze">
+    </fragment>
+
+</navigation>
