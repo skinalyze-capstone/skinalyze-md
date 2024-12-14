@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import android.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.dicoding.skinalyze.R
 import com.dicoding.skinalyze.database.HistoryAnalyzeRoom
 import com.dicoding.skinalyze.databinding.FragmentResultBinding
 import com.dicoding.skinalyze.repository.HistoryAnalyzeRepository
@@ -50,6 +52,9 @@ class ResultFragment : Fragment() {
             binding.rvResultList.adapter = resultAdapter
             binding.dateTextView.text = history.date
             binding.timeTextView.text = history.time
+            binding.buttonToProduct.setOnClickListener {
+                findNavController().navigate(R.id.action_resultFragment_to_productFragment)
+            }
             binding.ivTrash.setOnClickListener {
                 deleteHistory(historyId)
             }

@@ -61,8 +61,7 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.analyzeFragment, R.id.settingFragment,
                 R.id.resultFragment, R.id.ChangePasswordFragment,
-                R.id.EditProfileFragment, R.id.categoryDetailFragment,
-                R.id.productDetailFragment -> {
+                R.id.EditProfileFragment -> {
                     navView.visibility = View.GONE
                 }
                 else -> {
@@ -75,8 +74,7 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.settingFragment, R.id.analyzeFragment,
                 R.id.resultFragment, R.id.ChangePasswordFragment,
-                R.id.EditProfileFragment, R.id.categoryDetailFragment,
-                R.id.productDetailFragment-> {
+                R.id.EditProfileFragment -> {
                     supportActionBar?.setDisplayHomeAsUpEnabled(true)
                 }
                 else -> {

@@ -97,34 +97,10 @@
 
     <fragment
         android:id="@+id/navigation_product"
-        android:name="com.dicoding.skinalyze.ui.product.ProductFragment"
+        android:name="com.dicoding.skinalyze.ui.product.ProductRecommendationFragment"
         android:label="Product Recommendation"
-        tools:layout="@layout/fragment_product">
+        tools:layout="@layout/fragment_product_recommendation">
         <action
-            android:id="@+id/action_productFragment_to_categoryDetailFragment"
-            app:destination="@id/categoryDetailFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-    </fragment>
-
-    <!-- Category Detail Fragment -->
-    <fragment
-        android:id="@+id/categoryDetailFragment"
-        android:name="com.dicoding.skinalyze.ui.product.CategoryDetailFragment"
-        android:label="Category Detail"
-        tools:layout="@layout/fragment_category_detail">
-        <argument
-            android:name="categoryName"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_categoryDetailFragment_to_productDetailFragment"
-            app:destination="@id/productDetailFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
             android:id="@+id/action_productRecommendationFragment_to_itemProductFragment"
             app:destination="@id/itemProductFragment">
             <argument
@@ -133,7 +109,6 @@
         </action>
     </fragment>
 
-    <!-- Product Detail Fragment -->
     <fragment
         android:id="@+id/itemProductFragment"
         android:name="com.dicoding.skinalyze.ui.product.ItemProductFragment"
@@ -142,11 +117,7 @@
         <argument
             android:name="category"
             app:argType="string" />
-        <argument
-            android:name="productImageRes"
-            app:argType="integer" />
     </fragment>
-
 
     <!-- User Fragment -->
     <fragment
